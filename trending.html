@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending - Unity Gaming UI Kit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" nomodule></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6C5DD3',
+                        secondary: '#A46FFF',
+                        dark: '#1A1D1F',
+                        darkgray: '#272B30',
+                        lightgray: '#33383F'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#1A1D1F] text-white font-['Inter']">
+    <div id="app" class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-20 md:w-64 bg-dark border-r border-gray-800 hidden md:block">
+            <div class="h-full flex flex-col">
+                <!-- Logo -->
+                <div class="p-4 flex items-center space-x-3">
+                    <div class="bg-primary rounded-lg p-2 text-white">
+                        <ion-icon name="game-controller-outline" class="text-xl"></ion-icon>
+                    </div>
+                    <span class="text-lg font-bold hidden md:block">Unity</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="mt-6 flex-1">
+                    <ul>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="index.html" class="flex items-center space-x-3">
+                                <ion-icon name="home-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Home</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item active">
+                            <a href="trending.html" class="flex items-center space-x-3">
+                                <ion-icon name="trending-up-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Trending</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="popular-games.html" class="flex items-center space-x-3">
+                                <ion-icon name="flame-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Popular Games</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="recommended.html" class="flex items-center space-x-3">
+                                <ion-icon name="star-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Recommended</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="communities.html" class="flex items-center space-x-3">
+                                <ion-icon name="people-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Communities</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="settings.html" class="flex items-center space-x-3">
+                                <ion-icon name="settings-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- User Profile -->
+                <div class="p-4 mt-auto border-t border-gray-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span class="text-sm font-medium">AP</span>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="text-sm font-semibold">Alex Player</div>
+                            <div class="text-xs text-gray-400">Pro Gamer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto">
+            <!-- Mobile Header -->
+            <header class="bg-dark p-4 flex items-center justify-between md:hidden">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-primary rounded-lg p-1 text-white">
+                        <ion-icon name="game-controller-outline" class="text-xl"></ion-icon>
+                    </div>
+                    <span class="text-lg font-bold">Unity</span>
+                </div>
+                <button class="p-2 rounded-lg bg-darkgray">
+                    <ion-icon name="menu-outline" class="text-xl"></ion-icon>
+                </button>
+            </header>
+
+            <!-- Content -->
+            <div class="p-4 md:p-6">
+                <!-- Search Bar -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="relative flex-1 max-w-lg">
+                        <ion-icon name="search-outline" class="absolute left-3 top-3 text-gray-400"></ion-icon>
+                        <input type="text" placeholder="Search trending games" class="w-full pl-10 pr-4 py-2 bg-darkgray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div class="flex items-center space-x-3 ml-4">
+                        <button class="p-2 rounded-lg bg-darkgray">
+                            <ion-icon name="notifications-outline" class="text-xl"></ion-icon>
+                        </button>
+                        <button class="p-2 rounded-lg bg-darkgray">
+                            <ion-icon name="chatbubble-outline" class="text-xl"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Trending Banner -->
+                <div class="flex items-center mb-6 p-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl">
+                    <div class="mr-4 text-4xl text-primary">
+                        <ion-icon name="trending-up"></ion-icon>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold">Trending Games</h1>
+                        <p class="text-gray-300">Discover what's hot right now in the gaming world</p>
+                    </div>
+                </div>
+
+                <!-- Trending Games -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold">Top Trending Games</h2>
+                        <select class="bg-darkgray text-gray-300 py-1 px-3 rounded-lg text-sm focus:outline-none">
+                            <option>This Week</option>
+                            <option>This Month</option>
+                            <option>All Time</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Trending Game 1 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                    <span>72%</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">#1</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">Cyberpunk 2078</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="flex text-yellow-500 text-xs">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-half"></ion-icon>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">4.5</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-purple-500/20 text-purple-500 text-xs px-2 py-1 rounded">RPG</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>1.2M players</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trending Game 2 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                    <span>65%</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">#2</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">Advanced Warfare 5</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="flex text-yellow-500 text-xs">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">4.0</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-blue-500/20 text-blue-500 text-xs px-2 py-1 rounded">FPS</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>980K players</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trending Game 3 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                    <span>52%</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">#3</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">Legends of Fantasy II</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="flex text-yellow-500 text-xs">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-half"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">3.5</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-green-500/20 text-green-500 text-xs px-2 py-1 rounded">Adventure</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>825K players</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trending Game 4 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1542751371-ed5e0927a964?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                    <span>45%</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">#4</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">Neon Racing Champions</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="flex text-yellow-500 text-xs">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-half"></ion-icon>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">4.5</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Racing</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>760K players</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending Streamers -->
+                <div class="mb-8">
+                    <h2 class="text-lg font-bold mb-4">Trending Streamers</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Streamer 1 -->
+                        <div class="bg-darkgray rounded-xl overflow-hidden">
+                            <div class="flex items-center p-4">
+                                <div class="relative mr-4">
+                                    <div class="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <span class="text-lg font-bold">MG</span>
+                                    </div>
+                                    <div class="absolute -bottom-1 -right-1 bg-green-500 w-5 h-5 rounded-full flex items-center justify-center">
+                                        <ion-icon name="checkmark" class="text-xs"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold">MasterGamer99</h3>
+                                        <div class="text-primary text-xs font-medium px-2 py-1 bg-primary/10 rounded flex items-center">
+                                            <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                            <span>128%</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1">Cyberpunk 2078 speedruns and no-hit challenges</p>
+                                    <div class="flex items-center text-xs text-gray-400 mt-2">
+                                        <span class="flex items-center mr-3">
+                                            <ion-icon name="people-outline" class="mr-1"></ion-icon>
+                                            2.4M followers
+                                        </span>
+                                        <span class="flex items-center">
+                                            <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                            340K average views
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Streamer 2 -->
+                        <div class="bg-darkgray rounded-xl overflow-hidden">
+                            <div class="flex items-center p-4">
+                                <div class="relative mr-4">
+                                    <div class="w-16 h-16 rounded-full bg-pink-500 flex items-center justify-center">
+                                        <span class="text-lg font-bold">QP</span>
+                                    </div>
+                                    <div class="absolute -bottom-1 -right-1 bg-green-500 w-5 h-5 rounded-full flex items-center justify-center">
+                                        <ion-icon name="checkmark" class="text-xs"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold">QueenOfPixels</h3>
+                                        <div class="text-primary text-xs font-medium px-2 py-1 bg-primary/10 rounded flex items-center">
+                                            <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                            <span>95%</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1">Pro FPS player - Advanced Warfare tournaments</p>
+                                    <div class="flex items-center text-xs text-gray-400 mt-2">
+                                        <span class="flex items-center mr-3">
+                                            <ion-icon name="people-outline" class="mr-1"></ion-icon>
+                                            1.8M followers
+                                        </span>
+                                        <span class="flex items-center">
+                                            <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                            280K average views
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Streamer 3 -->
+                        <div class="bg-darkgray rounded-xl overflow-hidden">
+                            <div class="flex items-center p-4">
+                                <div class="relative mr-4">
+                                    <div class="w-16 h-16 rounded-full bg-yellow-500 flex items-center justify-center">
+                                        <span class="text-lg font-bold">EL</span>
+                                    </div>
+                                    <div class="absolute -bottom-1 -right-1 bg-green-500 w-5 h-5 rounded-full flex items-center justify-center">
+                                        <ion-icon name="checkmark" class="text-xs"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold">EpicLegend</h3>
+                                        <div class="text-primary text-xs font-medium px-2 py-1 bg-primary/10 rounded flex items-center">
+                                            <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                            <span>87%</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1">Fantasy RPGs and strategy games</p>
+                                    <div class="flex items-center text-xs text-gray-400 mt-2">
+                                        <span class="flex items-center mr-3">
+                                            <ion-icon name="people-outline" class="mr-1"></ion-icon>
+                                            1.5M followers
+                                        </span>
+                                        <span class="flex items-center">
+                                            <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                            220K average views
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Streamer 4 -->
+                        <div class="bg-darkgray rounded-xl overflow-hidden">
+                            <div class="flex items-center p-4">
+                                <div class="relative mr-4">
+                                    <div class="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center">
+                                        <span class="text-lg font-bold">RS</span>
+                                    </div>
+                                    <div class="absolute -bottom-1 -right-1 bg-green-500 w-5 h-5 rounded-full flex items-center justify-center">
+                                        <ion-icon name="checkmark" class="text-xs"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold">RacingSpecialist</h3>
+                                        <div class="text-primary text-xs font-medium px-2 py-1 bg-primary/10 rounded flex items-center">
+                                            <ion-icon name="arrow-up" class="mr-1"></ion-icon>
+                                            <span>78%</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1">Racing games and championships</p>
+                                    <div class="flex items-center text-xs text-gray-400 mt-2">
+                                        <span class="flex items-center mr-3">
+                                            <ion-icon name="people-outline" class="mr-1"></ion-icon>
+                                            1.2M followers
+                                        </span>
+                                        <span class="flex items-center">
+                                            <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                            190K average views
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending Topics -->
+                <div class="mb-8">
+                    <h2 class="text-lg font-bold mb-4">Trending Topics</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <a href="#" class="bg-darkgray rounded-lg p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-purple-500 mb-2 text-2xl"><ion-icon name="trophy"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">ESports Championships</span>
+                            <span class="text-xs text-gray-400 mt-1">450K discussions</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-lg p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-blue-500 mb-2 text-2xl"><ion-icon name="desktop"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">New Gaming Hardware</span>
+                            <span class="text-xs text-gray-400 mt-1">320K discussions</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-lg p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-green-500 mb-2 text-2xl"><ion-icon name="ticket"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">Game Deals & Sales</span>
+                            <span class="text-xs text-gray-400 mt-1">280K discussions</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-lg p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-yellow-500 mb-2 text-2xl"><ion-icon name="bulb"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">Gaming Tips & Tricks</span>
+                            <span class="text-xs text-gray-400 mt-1">210K discussions</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile menu overlay for when sidebar is open -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"></div>
+
+    <!-- JavaScript for mobile menu toggle and other interactions -->
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,39 @@
+/* Custom styles for the Unity Gaming UI Kit */
+.game-card {
+    transition: transform 0.2s;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+}
+
+.sidebar-item {
+    transition: background-color 0.2s;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(108, 93, 211, 0.1);
+}
+
+.sidebar-item.active {
+    background-color: rgba(108, 93, 211, 0.2);
+    border-left: 3px solid #6C5DD3;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1A1D1F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #33383F;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6C5DD3;
+} 

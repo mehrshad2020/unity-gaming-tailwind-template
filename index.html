@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Gaming UI Kit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" nomodule></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6C5DD3',
+                        secondary: '#A46FFF',
+                        dark: '#1A1D1F',
+                        darkgray: '#272B30',
+                        lightgray: '#33383F'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#1A1D1F] text-white font-['Inter']">
+    <div id="app" class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-20 md:w-64 bg-dark border-r border-gray-800 hidden md:block">
+            <div class="h-full flex flex-col">
+                <!-- Logo -->
+                <div class="p-4 flex items-center space-x-3">
+                    <div class="bg-primary rounded-lg p-2 text-white">
+                        <ion-icon name="game-controller-outline" class="text-xl"></ion-icon>
+                    </div>
+                    <span class="text-lg font-bold hidden md:block">Unity</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="mt-6 flex-1">
+                    <ul>
+                        <li class="px-4 py-3 sidebar-item active">
+                            <a href="#" class="flex items-center space-x-3">
+                                <ion-icon name="home-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Home</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="#" class="flex items-center space-x-3">
+                                <ion-icon name="trending-up-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Trending</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="#" class="flex items-center space-x-3">
+                                <ion-icon name="flame-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Popular Games</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="#" class="flex items-center space-x-3">
+                                <ion-icon name="star-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Recommended</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="#" class="flex items-center space-x-3">
+                                <ion-icon name="people-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Communities</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="#" class="flex items-center space-x-3">
+                                <ion-icon name="settings-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- User Profile -->
+                <div class="p-4 mt-auto border-t border-gray-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span class="text-sm font-medium">AP</span>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="text-sm font-semibold">Alex Player</div>
+                            <div class="text-xs text-gray-400">Pro Gamer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto">
+            <!-- Mobile Header -->
+            <header class="bg-dark p-4 flex items-center justify-between md:hidden">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-primary rounded-lg p-1 text-white">
+                        <ion-icon name="game-controller-outline" class="text-xl"></ion-icon>
+                    </div>
+                    <span class="text-lg font-bold">Unity</span>
+                </div>
+                <button class="p-2 rounded-lg bg-darkgray">
+                    <ion-icon name="menu-outline" class="text-xl"></ion-icon>
+                </button>
+            </header>
+
+            <!-- Content -->
+            <div class="p-4 md:p-6">
+                <!-- Search Bar -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="relative flex-1 max-w-lg">
+                        <ion-icon name="search-outline" class="absolute left-3 top-3 text-gray-400"></ion-icon>
+                        <input type="text" placeholder="Search anything" class="w-full pl-10 pr-4 py-2 bg-darkgray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div class="flex items-center space-x-3 ml-4">
+                        <button class="p-2 rounded-lg bg-darkgray">
+                            <ion-icon name="notifications-outline" class="text-xl"></ion-icon>
+                        </button>
+                        <button class="p-2 rounded-lg bg-darkgray">
+                            <ion-icon name="chatbubble-outline" class="text-xl"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured Match -->
+                <div class="relative rounded-xl overflow-hidden mb-8">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=400&q=80" alt="Featured Match" class="w-full h-48 md:h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4 md:p-6">
+                        <h2 class="text-xl md:text-2xl font-bold">Renegades vs Chaos - ESL Pro League Season 16 - Playoffs</h2>
+                        <div class="flex items-center mt-2 text-sm text-gray-300">
+                            <span>League of Legends</span>
+                            <span class="mx-2">•</span>
+                            <span>Live</span>
+                        </div>
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg w-max text-sm font-medium">
+                            Watch Live
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Channels Section -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold">Live Channels</h2>
+                        <select class="bg-darkgray text-gray-300 py-1 px-3 rounded-lg text-sm focus:outline-none">
+                            <option>Popular</option>
+                            <option>Newest</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Game Card 1 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">LIVE</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">2023 World Championship Gaming Marathon</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center">
+                                        <span class="text-xs">GG</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">GameGenius</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>12.5K watching</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Card 2 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">LIVE</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">Team Flash vs Dragon Rebellion</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <span class="text-xs">TP</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">TacticalPro</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>8.3K watching</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Card 3 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">LIVE</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">2023 World Championship Gaming Marathon</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                                        <span class="text-xs">ES</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">ESportsCaster</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>9.7K watching</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Card 4 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1580327344181-c1163234e5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">LIVE</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">2023 World Championship Gaming Marathon</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-yellow-500 flex items-center justify-center">
+                                        <span class="text-xs">GW</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">GameWizard</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>5.2K watching</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- From Channels You Follow -->
+                <div class="mb-8">
+                    <h2 class="text-lg font-bold mb-4">From Channels You Follow</h2>
+                    <div class="flex items-center space-x-6 overflow-x-auto pb-4">
+                        <!-- Channel 1 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                                <span class="text-sm">AP</span>
+                            </div>
+                            <span class="mt-2 text-xs text-center">Alex<br>Player</span>
+                            <span class="text-xs text-gray-400">14.2K</span>
+                        </div>
+                        
+                        <!-- Channel 2 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center">
+                                <span class="text-sm">GG</span>
+                            </div>
+                            <span class="mt-2 text-xs text-center">Game<br>Genius</span>
+                            <span class="text-xs text-gray-400">28.7K</span>
+                        </div>
+                        
+                        <!-- Channel 3 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center">
+                                <span class="text-sm">EG</span>
+                            </div>
+                            <span class="mt-2 text-xs text-center">Esports<br>Girl</span>
+                            <span class="text-xs text-gray-400">42.3K</span>
+                        </div>
+                        
+                        <!-- Channel 4 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center">
+                                <span class="text-sm">TP</span>
+                            </div>
+                            <span class="mt-2 text-xs text-center">Tactical<br>Pro</span>
+                            <span class="text-xs text-gray-400">18.9K</span>
+                        </div>
+                        
+                        <!-- Channel 5 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center">
+                                <span class="text-sm">EC</span>
+                            </div>
+                            <span class="mt-2 text-xs text-center">Esports<br>Caster</span>
+                            <span class="text-xs text-gray-400">32.1K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Categories -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold">Popular Categories</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <!-- Category 1 -->
+                        <div class="relative rounded-xl overflow-hidden h-32 game-card">
+                            <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=200&q=80" alt="League of Legends" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-3">
+                                <div class="flex items-center space-x-2">
+                                    <div class="bg-primary/50 px-2 py-1 rounded text-xs">MOBA</div>
+                                    <div class="bg-secondary/50 px-2 py-1 rounded text-xs">5v5</div>
+                                </div>
+                                <h3 class="font-semibold mt-1">League of Legends</h3>
+                                <button class="mt-2 bg-primary px-3 py-1 rounded text-xs font-medium">Follow</button>
+                            </div>
+                        </div>
+
+                        <!-- Category 2 -->
+                        <div class="relative rounded-xl overflow-hidden h-32 game-card">
+                            <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=200&q=80" alt="Valorant" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-3">
+                                <div class="flex items-center space-x-2">
+                                    <div class="bg-primary/50 px-2 py-1 rounded text-xs">FPS</div>
+                                    <div class="bg-secondary/50 px-2 py-1 rounded text-xs">5v5</div>
+                                </div>
+                                <h3 class="font-semibold mt-1">Valorant</h3>
+                                <button class="mt-2 bg-primary px-3 py-1 rounded text-xs font-medium">Follow</button>
+                            </div>
+                        </div>
+
+                        <!-- Category 3 -->
+                        <div class="relative rounded-xl overflow-hidden h-32 game-card">
+                            <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=200&q=80" alt="Call of Duty" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-3">
+                                <div class="flex items-center space-x-2">
+                                    <div class="bg-primary/50 px-2 py-1 rounded text-xs">Shooter</div>
+                                </div>
+                                <h3 class="font-semibold mt-1">Call of Duty</h3>
+                                <button class="mt-2 bg-primary px-3 py-1 rounded text-xs font-medium">Follow</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Videos -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold">Recommended Videos</h2>
+                        <select class="bg-darkgray text-gray-300 py-1 px-3 rounded-lg text-sm focus:outline-none">
+                            <option>Popular</option>
+                            <option>Newest</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Video Card 1 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Video" class="w-full h-40 object-cover">
+                                <div class="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">12:45</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">2023 World Championship Gaming Marathon</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center">
+                                        <span class="text-xs">GG</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">GameGenius</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>243K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Card 2 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Video" class="w-full h-40 object-cover">
+                                <div class="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">24:18</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">Team Flash vs Dragon Rebellion</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <span class="text-xs">TP</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">TacticalPro</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>124K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Card 3 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Video" class="w-full h-40 object-cover">
+                                <div class="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">18:32</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">2023 World Championship Gaming Marathon</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                                        <span class="text-xs">ES</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">ESportsCaster</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>98K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Card 4 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1586182987320-4f376d39d787?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Video" class="w-full h-40 object-cover">
+                                <div class="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">09:47</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-semibold text-sm">2023 World Championship Gaming Marathon</h3>
+                                <div class="flex items-center mt-2">
+                                    <div class="w-6 h-6 rounded-full bg-yellow-500 flex items-center justify-center">
+                                        <span class="text-xs">GW</span>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-400">GameWizard</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Gaming</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="eye-outline" class="mr-1"></ion-icon>
+                                        <span>78K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile menu overlay for when sidebar is open -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"></div>
+
+    <!-- JavaScript for mobile menu toggle and other interactions -->
+    <script src="script.js"></script>
+</body>
+</html> 

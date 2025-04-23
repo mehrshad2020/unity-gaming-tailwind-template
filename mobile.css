@@ -1,0 +1,73 @@
+/* Mobile-specific styles for the Unity Gaming UI Kit */
+@media (max-width: 640px) {
+    .game-card {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .sidebar-item {
+        padding: 12px 16px;
+    }
+    
+    .sidebar-item.active {
+        border-left-width: 2px;
+    }
+    
+    /* Mobile sidebar when displayed */
+    aside.fixed {
+        animation: slideIn 0.3s ease-in-out;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    @keyframes slideIn {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(0); }
+    }
+    
+    /* Channel scrolling */
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+    
+    /* Mobile optimizations for video and game cards */
+    .game-card h3 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* Better tap targets for mobile */
+    button, .sidebar-item, select {
+        min-height: 44px;
+    }
+    
+    /* Modal menu for mobile */
+    .mobile-menu-overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 380px) {
+    .p-4 {
+        padding: 0.75rem;
+    }
+    
+    .grid {
+        grid-gap: 0.5rem;
+    }
+    
+    .text-lg {
+        font-size: 1rem;
+    }
+    
+    .space-x-6 > * + * {
+        margin-left: 1rem;
+    }
+} 

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Games - Unity Gaming UI Kit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" nomodule></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6C5DD3',
+                        secondary: '#A46FFF',
+                        dark: '#1A1D1F',
+                        darkgray: '#272B30',
+                        lightgray: '#33383F'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#1A1D1F] text-white font-['Inter']">
+    <div id="app" class="flex min-h-screen">
+        <!-- Sidebar with navigation -->
+        <aside class="w-20 md:w-64 bg-dark border-r border-gray-800 hidden md:block">
+            <div class="h-full flex flex-col">
+                <!-- Logo -->
+                <div class="p-4 flex items-center space-x-3">
+                    <div class="bg-primary rounded-lg p-2 text-white">
+                        <ion-icon name="game-controller-outline" class="text-xl"></ion-icon>
+                    </div>
+                    <span class="text-lg font-bold hidden md:block">Unity</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="mt-6 flex-1">
+                    <ul>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="index.html" class="flex items-center space-x-3">
+                                <ion-icon name="home-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Home</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="trending.html" class="flex items-center space-x-3">
+                                <ion-icon name="trending-up-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Trending</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item active">
+                            <a href="popular-games.html" class="flex items-center space-x-3">
+                                <ion-icon name="flame-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Popular Games</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="recommended.html" class="flex items-center space-x-3">
+                                <ion-icon name="star-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Recommended</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="communities.html" class="flex items-center space-x-3">
+                                <ion-icon name="people-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Communities</span>
+                            </a>
+                        </li>
+                        <li class="px-4 py-3 sidebar-item">
+                            <a href="settings.html" class="flex items-center space-x-3">
+                                <ion-icon name="settings-outline" class="text-xl"></ion-icon>
+                                <span class="hidden md:block">Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- User Profile -->
+                <div class="p-4 mt-auto border-t border-gray-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span class="text-sm font-medium">AP</span>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="text-sm font-semibold">Alex Player</div>
+                            <div class="text-xs text-gray-400">Pro Gamer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto">
+            <!-- Mobile Header -->
+            <header class="bg-dark p-4 flex items-center justify-between md:hidden">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-primary rounded-lg p-1 text-white">
+                        <ion-icon name="game-controller-outline" class="text-xl"></ion-icon>
+                    </div>
+                    <span class="text-lg font-bold">Unity</span>
+                </div>
+                <button class="p-2 rounded-lg bg-darkgray">
+                    <ion-icon name="menu-outline" class="text-xl"></ion-icon>
+                </button>
+            </header>
+
+            <!-- Content -->
+            <div class="p-4 md:p-6">
+                <!-- Search Bar -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="relative flex-1 max-w-lg">
+                        <ion-icon name="search-outline" class="absolute left-3 top-3 text-gray-400"></ion-icon>
+                        <input type="text" placeholder="Search popular games" class="w-full pl-10 pr-4 py-2 bg-darkgray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div class="flex items-center space-x-3 ml-4">
+                        <button class="p-2 rounded-lg bg-darkgray">
+                            <ion-icon name="notifications-outline" class="text-xl"></ion-icon>
+                        </button>
+                        <button class="p-2 rounded-lg bg-darkgray">
+                            <ion-icon name="chatbubble-outline" class="text-xl"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Popular Games Banner -->
+                <div class="relative rounded-xl overflow-hidden mb-8">
+                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=400&q=80" alt="Popular Games" class="w-full h-48 md:h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4 md:p-6">
+                        <h1 class="text-xl md:text-2xl font-bold">Popular Games</h1>
+                        <p class="text-gray-300 mt-2">Discover the most-played games across all platforms</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <button class="bg-primary/20 hover:bg-primary/30 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                                All Games
+                            </button>
+                            <button class="bg-darkgray/50 hover:bg-darkgray/70 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                                Action
+                            </button>
+                            <button class="bg-darkgray/50 hover:bg-darkgray/70 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                                RPG
+                            </button>
+                            <button class="bg-darkgray/50 hover:bg-darkgray/70 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                                FPS
+                            </button>
+                            <button class="bg-darkgray/50 hover:bg-darkgray/70 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                                Strategy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Categories -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold">Categories</h2>
+                        <a href="#" class="text-primary text-sm">View All</a>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <a href="#" class="bg-darkgray rounded-xl p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-red-500 mb-2 text-2xl"><ion-icon name="flame"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">Action</span>
+                            <span class="text-xs text-gray-400 mt-1">2.4K games</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-xl p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-purple-500 mb-2 text-2xl"><ion-icon name="color-wand"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">RPG</span>
+                            <span class="text-xs text-gray-400 mt-1">1.8K games</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-xl p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-blue-500 mb-2 text-2xl"><ion-icon name="aperture"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">FPS</span>
+                            <span class="text-xs text-gray-400 mt-1">1.5K games</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-xl p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-green-500 mb-2 text-2xl"><ion-icon name="map"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">Strategy</span>
+                            <span class="text-xs text-gray-400 mt-1">1.2K games</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-xl p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-orange-500 mb-2 text-2xl"><ion-icon name="car-sport"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">Racing</span>
+                            <span class="text-xs text-gray-400 mt-1">980 games</span>
+                        </a>
+                        <a href="#" class="bg-darkgray rounded-xl p-4 flex flex-col items-center hover:bg-lightgray transition-colors">
+                            <span class="text-pink-500 mb-2 text-2xl"><ion-icon name="heart"></ion-icon></span>
+                            <span class="font-semibold text-sm text-center">Adventure</span>
+                            <span class="text-xs text-gray-400 mt-1">850 games</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Most Popular Games -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold">Most Popular Games</h2>
+                        <select class="bg-darkgray text-gray-300 py-1 px-3 rounded-lg text-sm focus:outline-none">
+                            <option>All Time</option>
+                            <option>This Month</option>
+                            <option>This Week</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Game Card 1 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="star" class="mr-1 text-yellow-500"></ion-icon>
+                                    <span>9.8</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                                    <h3 class="font-semibold text-sm">Galaxy Legends</h3>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="bg-blue-500/20 text-blue-500 text-xs px-2 py-1 rounded">FPS</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="trending-up" class="mr-1 text-green-500"></ion-icon>
+                                        <span>23.8M players</span>
+                                    </div>
+                                </div>
+                                <div class="mt-3 w-full bg-gray-700 rounded-full h-1.5">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-1.5 rounded-full" style="width: 95%"></div>
+                                </div>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-xs text-gray-400">2023</span>
+                                    <span class="text-xs text-gray-400">95% positive</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Card 2 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="star" class="mr-1 text-yellow-500"></ion-icon>
+                                    <span>9.5</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                                    <h3 class="font-semibold text-sm">Neon Drift Racing</h3>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="bg-orange-500/20 text-orange-500 text-xs px-2 py-1 rounded">Racing</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="trending-up" class="mr-1 text-green-500"></ion-icon>
+                                        <span>18.5M players</span>
+                                    </div>
+                                </div>
+                                <div class="mt-3 w-full bg-gray-700 rounded-full h-1.5">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-1.5 rounded-full" style="width: 92%"></div>
+                                </div>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-xs text-gray-400">2022</span>
+                                    <span class="text-xs text-gray-400">92% positive</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Card 3 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="star" class="mr-1 text-yellow-500"></ion-icon>
+                                    <span>9.2</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                                    <h3 class="font-semibold text-sm">Epic Battle Royale</h3>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="bg-red-500/20 text-red-500 text-xs px-2 py-1 rounded">Action</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="trending-up" class="mr-1 text-green-500"></ion-icon>
+                                        <span>15.2M players</span>
+                                    </div>
+                                </div>
+                                <div class="mt-3 w-full bg-gray-700 rounded-full h-1.5">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-1.5 rounded-full" style="width: 88%"></div>
+                                </div>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-xs text-gray-400">2023</span>
+                                    <span class="text-xs text-gray-400">88% positive</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Card 4 -->
+                        <div class="game-card rounded-xl overflow-hidden bg-darkgray">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=180&q=80" alt="Game" class="w-full h-40 object-cover">
+                                <div class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded flex items-center">
+                                    <ion-icon name="star" class="mr-1 text-yellow-500"></ion-icon>
+                                    <span>9.0</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                                    <h3 class="font-semibold text-sm">Rhythm Champions</h3>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="bg-purple-500/20 text-purple-500 text-xs px-2 py-1 rounded">Music</div>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <ion-icon name="trending-up" class="mr-1 text-green-500"></ion-icon>
+                                        <span>12.3M players</span>
+                                    </div>
+                                </div>
+                                <div class="mt-3 w-full bg-gray-700 rounded-full h-1.5">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-1.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-xs text-gray-400">2022</span>
+                                    <span class="text-xs text-gray-400">85% positive</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile menu overlay for when sidebar is open -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"></div>
+
+    <!-- JavaScript for mobile menu toggle and other interactions -->
+    <script src="script.js"></script>
+</body>
+</html> 
